@@ -6,7 +6,8 @@
 
 void main()
 {
-	setlocale(LC_ALL, "Russian");
+	setlocale(LC_ALL,"Russian");
+	int nom = 1;
 	int i, num_search, zach;
 	char search[20];
 	struct student
@@ -19,22 +20,23 @@ void main()
 	for (i = 0; i < 3; i++)
 	{
 		printf("Введите фамилию студента\n");
-		scanf_s("%s", &stud[i].famil);
+		scanf("%s", &stud[i].famil);
 	}
 	for (i = 0; i < 3; i++)
 	{
 		printf("Введите имя студента %s\n", stud[i].famil);
-		scanf_s("%s", &stud[i].name);
+		scanf("%s", &stud[i].name);
 	}
 	for (i = 0; i < 3; i++)
 	{
+
 		printf("Введите название факультета студента %s %s\n", stud[i].famil, stud[i].name);
-		scanf_s("%s", &stud[i].facult);
+		scanf("%s", &stud[i].facult);
 	}
 	for (i = 0; i < 3; i++)
 	{
 		printf("Введите номер зачётной книжки студента %s %s\n", stud[i].famil, stud[i].name);
-		scanf_s("%d", &stud[i].Nomzach);
+		scanf("%d", &stud[i].Nomzach);
 	}
 
 	for (i = 0; i < 3; i++)
@@ -43,10 +45,10 @@ void main()
 			stud[i].facult, stud[i].Nomzach);
 	}
 	printf("\nПо какому параметру начать поиск студента?\n1- Фамилии\n2 - Имени\n3 - Факультета\n4 - Зачётной книжки\n");
-	scanf_s("%d", &num_search);
+	scanf("%d", &num_search);	
 	if (num_search == 1) {
 		printf("Введите фамилию студента - ");
-		scanf_s("%s", &search);
+		scanf("%s", &search);
 		printf("\n");
 		for (i = 0; i < 3; i++)
 		{
@@ -56,9 +58,10 @@ void main()
 			}
 		}
 	}
-	else if (num_search == 2) {
+	h1:
+	 if (num_search == 2) {
 		printf("Введите имя студента - ");
-		scanf_s("%s", &search);
+		scanf("%s", &search);
 		printf("\n");
 		for (i = 0; i < 3; i++)
 		{
@@ -68,9 +71,10 @@ void main()
 			}
 		}
 	}
-	else if (num_search == 3) {
+	h2:
+	 if (num_search == 3) {
 		printf("Введите факультет студента - ");
-		scanf_s("%s", &search);
+		scanf("%s", &search);
 		printf("\n");
 		for (i = 0; i < 3; i++)
 		{
@@ -80,9 +84,10 @@ void main()
 			}
 		}
 	}
-	else if (num_search == 4) {
+	h3:
+     if (num_search == 4) {
 		printf("Введите номер зачётной книжки студента:");
-		scanf_s("%d", &zach);
+		scanf("%d", &zach);
 		printf("\n");
 		for (i = 0; i < 3; i++)
 		{
@@ -92,6 +97,31 @@ void main()
 			}
 		}
 	}
-	getchar();
-	getchar();
+	nom = nom + 1;
+	 if(nom == 2)
+	 {
+	 if(strcmp(stud[0].famil, stud[1].famil) == 0 || strcmp(stud[0].famil, stud[2].famil) == 0 || strcmp(stud[1].famil, stud[2].famil) == 0)
+	{
+		printf("\nПо вашему запросу найдено несколько студентов, по какому запросу хотите продолжить поиск? \n2 - Имени \n3 - Факультету \n4 - номеру зачетки\n");
+		scanf("%d", &num_search);
+		if(num_search == 2)
+		{
+			goto h1;
+		}
+		if(num_search == 3)
+		{
+			goto h2;
+		}
+		if(num_search == 4)
+		{
+			goto h3;
+		}
+		
+	}
+	 }
+	 
+
+
+		getchar();
+		getchar();
 }
