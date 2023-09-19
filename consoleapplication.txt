@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <iostream>
+
+void main() {
+
+	setlocale(LC_ALL, "Russian");
+	int i, n, *mass, max, min, answer;
+	printf("Введите размер массива\n");
+	scanf_s("%d", &n);
+	srand(time(NULL));
+	mass = (int*)malloc(n * sizeof(int));
+	printf("Массив:\n");
+	for (i = 0; i < n; i++) {
+		mass[i] = rand() % 101 - 10; 
+		printf("%d ", mass[i]);
+	}
+
+	for (i = 1, min = mass[0]; i < n; i++)
+		if (min > mass[i]) {
+			min = mass[i];
+		}
+
+	for (i = 1, max = mass[0]; i < n; i++)
+		if (max < mass[i]) {
+			max = mass[i];
+		}
+	answer = max - min;
+	printf("\nРазность = %d\n", answer);
+	free(mass);
+	system("pause");
+
+}
